@@ -76,8 +76,10 @@ export class AppComponent implements OnInit{
   logoff(){
     localStorage.removeItem(Constant.LOCAL_KEY)
     this.loggedUserData = new Customer();
+    console.log(this.loggedUserData );
+    
   }
 
-  
+
 }
 

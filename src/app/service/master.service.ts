@@ -24,6 +24,8 @@ export class MasterService {
   }
   registerNewCustomer(obj: Customer): Observable<APIResponseModel>{
     debugger;
+    console.log(obj);
+    
     const url = `${this.apiUrl}RegisterCustomer`;
     return this.http.post<APIResponseModel>(url,obj)
   }

@@ -47,9 +47,14 @@ throw new Error('Method not implemented.');
     onAddToCart(id: number){
       const newObj : CardModel = new CardModel();
       newObj.ProductId = id
-      newObj.CustId = this.loggedUserData.CustId
+      newObj.custId = this.loggedUserData.custId
+      console.log(newObj);
+      console.log(newObj.custId);
+      console.log(this.loggedUserData.custId);
+      
       this.masterService.addToCart(newObj).subscribe((res:APIResponseModel)=>{
         if(res.result){
+
           alert("Product added to cart")
         }else{
           alert(res.message)

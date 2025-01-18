@@ -10,13 +10,13 @@ export interface Category{
     userId:number
 }
 export class Customer{
-   CustId:number;
+   custId:number;
    name:string;
    MobileNo:string;
    Password:string;
 
    constructor(){
-      this.CustId = 0;
+      this.custId = 0;
       this.name = '';
       this.MobileNo = '';
       this.Password = '';
@@ -33,14 +33,14 @@ export class LoginModel{
 }
 export class CardModel{
    CartId:number;
-   CustId:number;
+   custId:number;
    ProductId:number;
    Quantity:number;
    AddedDate:Date;
 
    constructor(){
       this.CartId = 0;
-      this.CustId = 0;
+      this.custId = 0;
       this.ProductId = 0;
       this.Quantity = 1;
       this.AddedDate = new Date();

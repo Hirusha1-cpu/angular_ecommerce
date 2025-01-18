@@ -2,7 +2,7 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { APIResponseModel, Customer, LoginModel } from './model/Product';
+import { APIResponseModel, CardData, Customer, LoginModel } from './model/Product';
 import { MasterService } from './service/master.service';
 import { Constant } from './constants/constant';
 
@@ -19,14 +19,18 @@ export class AppComponent implements OnInit{
   masterService = inject(MasterService)
   loggedUserData: Customer = new Customer();
   loginObj: LoginModel = new LoginModel();
+
   @ViewChild("registerModel") registerModel: ElementRef | undefined;
   @ViewChild("loginModel") loginModel: ElementRef | undefined;
+  isCartPopUpOpen: boolean = true;
+  cardData: CardData [] = []
 
   ngOnInit(): void {
       const isUser = localStorage.getItem(Constant.LOCAL_KEY)
       if (isUser != null) {
         const parseObj = JSON.parse(isUser);
         this.loggedUserData = parseObj;
+        this.getCartItems();
       }
   }
   openRegisterModel(){
@@ -78,6 +82,19 @@ export class AppComponent implements OnInit{
     this.loggedUserData = new Customer();
     console.log(this.loggedUserData );
     
+  }
+
+  showCartPopUp(){
+    console.log("hii");
+    console.log(this.isCartPopUpOpen);
+    
+    this.isCartPopUpOpen = !this.isCartPopUpOpen
+  }
+
+  getCartItems(){
+    this.masterService.getCartProductsByCustomerId(this.loggedUserData.custId).subscribe((res:APIResponseModel)=>{
+      this.cardData = res.data
+    })
   }
 
 

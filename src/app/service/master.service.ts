@@ -40,4 +40,10 @@ export class MasterService {
     return this.http.post<APIResponseModel>(url,obj)
   }
 
+  // GetCartProductsByCustomerId?id=2164
+  getCartProductsByCustomerId(loggedUserID: Number): Observable<APIResponseModel>{
+    const url = `${this.apiUrl}GetCartProductsByCustomerId?id=${loggedUserID}`;
+    return this.http.get<APIResponseModel>(url)
+  }
+
 }

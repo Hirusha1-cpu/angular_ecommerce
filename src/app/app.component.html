@@ -32,9 +32,10 @@
                     <li>
                         <div class="d-flex justify-content-evenly mt-2">
                             <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight"> <button
-                                    class="btn btn-danger rounded-0 px-3" (click)="openLoginModel()">Login</button></a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openRegisterModel()"> <button
+                                aria-controls="offcanvasRight"> <button class="btn btn-danger rounded-0 px-3"
+                                    (click)="openLoginModel()">Login</button></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="openRegisterModel()"> <button
                                     class="btn btn-danger rounded-0 px-3">Register</button></a>
                         </div>
 
@@ -48,96 +49,96 @@
         <div class="d-flex align-items-center">
             @if (loggedUserData.custId == 0) {
 
-                <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal"
-                    data-bs-target="#exampleModalL" (click)="openLoginModel()">
-                    Login
-                </button>
-                <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" (click)="openRegisterModel()">
-                    Register
-                </button>
+            <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal"
+                data-bs-target="#exampleModalL" (click)="openLoginModel()">
+                Login
+            </button>
+            <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal"
+                data-bs-target="#exampleModal" (click)="openRegisterModel()">
+                Register
+            </button>
             }@else{
-                <button type="button" class="btn btn-primary btn-sm mx-2" >
-                   {{loggedUserData.name}}
-                </button>
-                <button type="button" class="btn btn-primary btn-sm mx-2" (click)="logoff()">
-                   Log Off
-                </button>
+            <button type="button" class="btn btn-primary btn-sm mx-2">
+                {{loggedUserData.name}}
+            </button>
+            <button type="button" class="btn btn-primary btn-sm mx-2" (click)="logoff()">
+                Log Off
+            </button>
             }
-            <a class="link-secondary me-3" href="#">
-                <i class="fa fa-shopping-cart"></i>
+            <a class="link-secondary me-3">
+                <i class="fa fa-shopping-cart text-black" (click)="showCartPopUp()"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-end show" style="position: absolute;
-          right: 13px;top:60px" aria-labelledby="navbarDropdownMenuAvatar">
-              <div class="row">
-                  <div class="col-8">
-                      <h6>Cart Items</h6>
-                  </div>
-                  <div class="col-4 text-end">
-                      <i class="fa fa-close p-2"></i>
-                  </div>
-              </div>
+            <div [className]="isCartPopUpOpen ? 'dropdown-menu dropdown-menu-end show':'dropdown-menu dropdown-menu-end hide'"
+              class="dropdown-menu dropdown-menu-end show"  style="position: absolute;right: 13px;top:60px" aria-labelledby="navbarDropdownMenuAvatar">
+                <div class="row">
+                    <div class="col-8">
+                        <h6>Cart Items</h6>
+                    </div>
+                    <div class="col-4 text-end">
+                        <i class="fa fa-close p-2" (click)="showCartPopUp()"></i>
+                    </div>
+                </div>
 
 
-              <table class="table table-sm">
-                  <tbody>
-                      <tr>
-                          <td>
-                              <div class="rounded"
-                                  style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
-                              </div>
-                          </td>
-                          <td class="align-middle text-left">Spy Suit</td>
-                          <td class="align-middle text-center">1 pieces</td>
-                          <td class="align-middle text-right">$698</td>
-                          <td class="align-middle text-center">
-                              <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                  <i class="fa fa-trash"></i>
-                              </a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                              <div class="rounded"
-                                  style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
-                              </div>
-                          </td>
-                          <td class="align-middle text-left">Spy Suit</td>
-                          <td class="align-middle text-center">1 pieces</td>
-                          <td class="align-middle text-right">$698</td>
-                          <td class="align-middle text-center">
-                              <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                  <i class="fa fa-trash"></i>
-                              </a>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>
-                              <div class="rounded"
-                                  style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
-                              </div>
-                          </td>
-                          <td class="align-middle text-left">Spy Suit</td>
-                          <td class="align-middle text-center">1 pieces</td>
-                          <td class="align-middle text-right">$698</td>
-                          <td class="align-middle text-center">
-                              <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
-                                  <i class="fa fa-trash"></i>
-                              </a>
-                          </td>
-                      </tr>
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="rounded"
+                                    style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
+                                </div>
+                            </td>
+                            <td class="align-middle text-left">Spy Suit</td>
+                            <td class="align-middle text-center">1 pieces</td>
+                            <td class="align-middle text-right">$698</td>
+                            <td class="align-middle text-center">
+                                <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="rounded"
+                                    style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
+                                </div>
+                            </td>
+                            <td class="align-middle text-left">Spy Suit</td>
+                            <td class="align-middle text-center">1 pieces</td>
+                            <td class="align-middle text-right">$698</td>
+                            <td class="align-middle text-center">
+                                <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="rounded"
+                                    style="background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&amp;w=640); width: 60px; height: 60px; background-size: cover;">
+                                </div>
+                            </td>
+                            <td class="align-middle text-left">Spy Suit</td>
+                            <td class="align-middle text-center">1 pieces</td>
+                            <td class="align-middle text-right">$698</td>
+                            <td class="align-middle text-center">
+                                <a href="#delete" data-toggle="modal" data-title="Delete your product ?">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
 
-                      <tr>
-                          <td colspan="4" class="align-middle text-right">Quantity</td>
-                          <td class="align-middle text-right">55</td>
-                      </tr>
-                      <tr>
-                          <td colspan="4" class="align-middle text-right">Total</td>
-                          <td class="align-middle text-right">3600</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div> 
+                        <tr>
+                            <td colspan="4" class="align-middle text-right">Quantity</td>
+                            <td class="align-middle text-right">55</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="align-middle text-right">Total</td>
+                            <td class="align-middle text-right">3600</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -196,7 +197,7 @@
                     <div class="col-12">
                         <label for="">Password:</label>
                         <input type="text" class="form-control" [(ngModel)]="loginObj.UserPassword">
-                    </div>                 
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
